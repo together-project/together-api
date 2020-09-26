@@ -1,0 +1,46 @@
+{
+  "name": "together-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "database-setup": "sequelize db:migrate:undo:all && sequelize db:migrate && sequelize db:seed:all",
+    "build-server": "rm -rf build && babel -d ./build/Release ./api -s",
+    "build": "npm run database-setup && npm run build-server",
+    "dev": "npm run database-setup && nodemon --exec babel-node ./api/index.js",
+    "start": "node ./build/Release/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/together-project/together-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/together-project/together-api/issues"
+  },
+  "homepage": "https://github.com/together-project/together-api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "pg": "^8.2.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.1.0",
+    "sequelize-cli": "^6.2.0",
+    "swagger-ui-express": "^4.1.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "@babel/node": "^7.10.3",
+    "@babel/plugin-transform-runtime": "^7.10.3",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/register": "^7.10.3",
+    "@babel/runtime": "^7.10.3",
+    "prettier": "^2.0.5"
+  }
+}
